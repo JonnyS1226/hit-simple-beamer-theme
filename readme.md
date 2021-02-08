@@ -1,10 +1,9 @@
-# HIT Beamer Theme
-
+## HIT Beamer Theme
 * 下载后直接使用即可
 * 非官方模版，仅仅是自己毕设需要做一些ppt而自己略微魔改的
 * 原始模版来自于 https://github.com/Trinkle23897/THU-Beamer-Theme
 
-> 一些展示图
+## 一些展示图
 ![show1](pic/show1.png)
 
 ![show2](pic/show2.png)

@@ -1,10 +1,13 @@
 # HIT Beamer Theme
 
 * 下载后直接使用即可
-* 非官方模版，仅仅是自己毕设需要做一些ppt而自己魔改的
-* 这个beamer模版改起来很方便，具体可以见https://www.latexstudio.net/archives/4051.html
-* 原始模版来自于https://github.com/Trinkle23897/THU-Beamer-Theme
+* 非官方模版，仅仅是自己毕设需要做一些ppt而自己略微魔改的
+* 原始模版来自于 https://github.com/Trinkle23897/THU-Beamer-Theme
 
+> 一些展示图
+![show1](pic/show1.png)
+
+![show2](pic/show2.png)
 
 
 > 原来的说明文档：

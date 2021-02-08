@@ -1,25 +1,26 @@
 \documentclass{beamer}
 \usepackage{ctex, hyperref}
 \usepackage[T1]{fontenc}
-
 % \usepackage[orientation=landscape,size=custom,width=16,height=9,scale=0.4,debug]{beamerposter}
 % 修改 slides 比例，
 
 % other packages
-
 \usepackage{latexsym,amsmath,xcolor,multicol,booktabs,calligra}
-\usepackage{graphicx,pstricks,listings,stackengine,cite}
+\usepackage{graphicx,pstricks,listings,stackengine,cite, multirow}
+\usepackage{algorithm,algpseudocode,amsmath}    % 写伪代码需要的包
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}  % Use Input in the format of Algorithm
+\renewcommand{\algorithmicensure}{\textbf{Output:}} % Use Output in the format of Algorithm
 
 \setbeamertemplate{bibliography item}[text]
-\bibliographystyle{plain}
+% \bibliographystyle{plain}
 % 如果参考文献太多的话，可以像下面这样调整字体：
-% \tiny\bibliographystyle{plain}
+\tiny\bibliographystyle{plain}
 
-\author{xxx}
-\title{毕业设计开题答辩}
-% \subtitle{毕业设计答辩}
-\institute{Department of Computer Science, Harbin institute of technology}
-\date{2021-1-7}
+\author[张三]{学~~~~~~生：张~~~~~三~~~~~~~~\vskip 5pt 指导教师：张~三~三~教授}
+\title{基于xxxxx的研究与实现}
+\subtitle{~~~~~~~~~~~~~~~~——毕业设计开题答辩}
+\institute[哈尔滨工业大学~计算机科学与技术学院]{\small \vskip 45pt哈尔滨工业大学~计算机科学与技术学院}
+\date{\small \vskip -17pt二〇二一年六月}
 \usepackage{College}
 
 % defs
@@ -46,12 +47,13 @@
 
 \kaishu
 \begin{frame}
+    \vspace{-15mm}
     \titlepage
-    \begin{figure}[htpb]
-        \begin{center}
-            \vspace*{-0.5cm}
-            \includegraphics[width=0.2\linewidth]{pic/hit.jpeg}
-        \end{center}
+    \vspace{-43mm}
+    \begin{figure}[htbp]
+      \begin{center}
+        \includegraphics[width=0.16\linewidth]{pic/hit.jpeg}
+      \end{center}
     \end{figure}
 \end{frame}
 
@@ -61,64 +63,38 @@
 
 
 
-\section{课题背景}
-
-\begin{frame}{用Beamer很高大上？}
-    \begin{itemize}[<+-| alert@+>] % 当然，除了alert，手动在里面插 \pause 也行
-        \item 大家都会\LaTeX，好多学校都有自己的Beamer主题
-        \item 中文支持请选择 Xe\LaTeX 编译选项
-    \end{itemize}
-\end{frame}
-
-
 \section{研究现状}
-
-\subsection{Beamer主题分类}
-
-\begin{frame}
-    \begin{itemize}
-        \item 有一些 \LaTeX 自带的
-        \item 本模板来源自 \newline \url{https://www.latexstudio.net/archives/4051.html}
+% 2
+\begin{frame}{研究现状}
+    针对JPEG-LS和图像压缩及加密领域，当前研究方向主要集中在：
+    \begin{itemize}[<+-| alert@+>] % 当然，除了alert，手动在里面插 \pause 也行
+        \item 图像压缩编码方面：JPEG-LS算法本身研究，主要在于提高编码速度和码率控制等方面
+        \item 图像加密处理方面：基于混沌系统的图像加密和基于光学变换的图像加密处理
+        \item 很少关注于将JPEG-LS压缩编码和加密结合
     \end{itemize}
 \end{frame}
 
 
-\section{研究内容}
+\section{研究内容和拟解决问题}
 
-\subsection{美化主题}
+\subsection{研究内容}
 
-\begin{frame}{这一份主题与原始的THU Beamer Theme区别在于}
-    \begin{itemize}
-        \item 顶栏的小点变成一行而不是多行
-        \item 中文采用楷书
-        \item 更多该模板的功能可以参考 \url{https://www.latexstudio.net/archives/4051.html}
-        \item 下面列举出了一些Beamer的用法，部分节选自 \url{https://tuna.moe/event/2018/latex/}
-    \end{itemize}
-\end{frame}
-
-\subsection{如何更好地做Beamer}
-
-\begin{frame}{Why Beamer}
-    \begin{itemize}
-        \item \LaTeX 广泛用于学术界，期刊会议论文模板
-    \end{itemize}
+\begin{frame}{混沌密码与传统密码学对比}
     \begin{table}[h]
         \centering
-        \begin{tabular}{c|c}
-            Microsoft\textsuperscript{\textregistered}  Word & \LaTeX \\
-            \hline
-            文字处理工具 & 专业排版软件 \\
-            容易上手，简单直观 & 容易上手 \\
-            所见即所得 & 所见即所想，所想即所得 \\
-            高级功能不易掌握 & 进阶难，但一般用不到 \\
-            处理长文档需要丰富经验 & 和短文档处理基本无异 \\
-            花费大量时间调格式 & 无需担心格式，专心作者内容 \\
-            公式排版差强人意 & 尤其擅长公式排版 \\
-            二进制格式，兼容性差 & 文本文件，易读、稳定 \\
-            付费商业许可 & 自由免费使用 \\
+        \caption{对比表}
+        \begin{tabular}{|l|l|l|}
+        \hline
+        比较                  & 传统密码学      & 混沌系统        \\ \hline
+        \multirow{3}{*}{相同} & 密钥敏感       & 对初始值敏感      \\ \cline{2-3} 
+                            & 扩散         & 混沌运动的轨道混合特性 \\ \cline{2-3} 
+                            & 混乱         & 混沌迭代序列的伪随机性 \\ \hline
+        不同                  & 密钥空间是有限离散集 & 密钥空间是连续实数集  \\ \hline
         \end{tabular}
     \end{table}
 \end{frame}
+
+\subsection{拟解决问题}
 
 \begin{frame}{排版举例}
     \begin{exampleblock}{无编号公式} % 加 * 
@@ -185,171 +161,53 @@
     \end{minipage}
 \end{frame}
 
-\begin{frame}[fragile]{\LaTeX{} 常用命令}
-    \begin{exampleblock}{命令}
+\section{技术路线}
+
+\begin{frame}{算法}
+    \begin{algorithm}[H]  
+        \caption{Conjugate Gradient Algorithm with Dynamic Step-Size Control}  
+        \label{alg::conjugateGradient}  
+        \begin{algorithmic}[1]  
+          \Require  
+            $f(x)$: objective funtion;  
+            $x_0$: initial solution;  
+            $s$: step size;  
+          \Ensure  
+            optimal $x^{*}$  
+          \State initial $g_0=0$ and $d_0=0$;  
+          \Repeat  
+            \State compute gradient directions $g_k=\bigtriangledown f(x_k)$;  
+            \State compute Polak-Ribiere parameter $\beta_k=\frac{g_k^{T}(g_k-g_{k-1})}{\parallel g_{k-1} \parallel^{2}}$;  
+            \State compute the conjugate directions $d_k=-g_k+\beta_k d_{k-1}$;  
+            \State compute the step size $\alpha_k=s/\parallel d_k \parallel_{2}$;  
+          \Until{($f(x_k)>f(x_{k-1})$)}  
+        \end{algorithmic}  
+      \end{algorithm}  
+\end{frame}
+
+\section{计划安排}
+
+\begin{frame}
+    \begin{table}[h]
         \centering
-        \footnotesize
-        \begin{tabular}{llll}
-            \cmd{chapter} & \cmd{section} & \cmd{subsection} & \cmd{paragraph} \\
-            章 & 节 & 小节 & 带题头段落 \\\hline
-            \cmd{centering} & \cmd{emph} & \cmd{verb} & \cmd{url} \\
-            居中对齐 & 强调 & 原样输出 & 超链接 \\\hline
-            \cmd{footnote} & \cmd{item} & \cmd{caption} & \cmd{includegraphics} \\
-            脚注 & 列表条目 & 标题 & 插入图片 \\\hline
-            \cmd{label} & \cmd{cite} & \cmd{ref} \\
-            标号 & 引用参考文献 & 引用图表公式等\\\hline
+        \caption{ 进度安排}
+        \begin{tabular}{|l|l|l|}
+        \hline
+        阶段   & 时间            & 进度                                                                                 \\ \hline
+        第一阶段 & 2021.1-2021.2 & \begin{tabular}[c]{@{}l@{}}确定毕业设计课题，撰写开题报告\\ 并寻找相关资料，了解课题\end{tabular}             \\ \hline
+        第二阶段 & 2021.2-2021.3 & \begin{tabular}[c]{@{}l@{}}学习JPEG-LS算法，并进行相关实践，\\ 尝试加入加密功能，形成初步的整体思路。\end{tabular} \\ \hline
+        第三阶段 & 2021.4        & 准备毕业设计中期答辩                                                                         \\ \hline
+        第四阶段 & 2021.4-2021.5 & 逐步完成算法理论研究，进行系统实现                                                                \\ \hline
+        第五阶段 & 2021.5-2021.6 & 完成毕业设计论文，准备毕业设计答辩                                                                  \\ \hline
         \end{tabular}
-    \end{exampleblock}
-    \begin{exampleblock}{环境}
-        \centering
-        \footnotesize
-        \begin{tabular}{lll}
-            \env{table} & \env{figure} & \env{equation}\\
-            表格 & 图片 & 公式 \\\hline
-            \env{itemize} & \env{enumerate} & \env{description}\\
-            无编号列表 & 编号列表 & 描述 \\\hline
-        \end{tabular}
-    \end{exampleblock}
-\end{frame}
-
-\begin{frame}[fragile]{\LaTeX{} 环境命令举例}
-    \begin{minipage}{0.5\linewidth}
-\begin{lstlisting}[language=TeX]
-\begin{itemize}
-  \item A \item B
-  \item C
-  \begin{itemize}
-    \item C-1
-  \end{itemize}
-\end{itemize}
-\end{lstlisting}
-    \end{minipage}\hspace{1cm}
-    \begin{minipage}{0.3\linewidth}
-        \begin{itemize}
-            \item A
-            \item B
-            \item C
-            \begin{itemize}
-                \item C-1
-            \end{itemize}
-        \end{itemize}
-    \end{minipage}
-    \medskip
-    \pause
-    \begin{minipage}{0.5\linewidth}
-\begin{lstlisting}[language=TeX]
-\begin{enumerate}
-  \item 巨佬 \item 大佬
-  \item 萌新
-  \begin{itemize}
-    \item[ww] 瑟瑟发抖
-  \end{itemize}
-\end{enumerate}
-\end{lstlisting}
-    \end{minipage}\hspace{1cm}
-    \begin{minipage}{0.3\linewidth}
-        \begin{enumerate}
-            \item 巨佬
-            \item 大佬
-            \item 萌新
-            \begin{itemize}
-                \item[NoNo721] 瑟瑟发抖
-            \end{itemize}
-        \end{enumerate}
-    \end{minipage}
-\end{frame}
-
-\begin{frame}[fragile]{\LaTeX{} 数学公式}
-    \begin{columns}
-        \begin{column}{.55\textwidth}
-\begin{lstlisting}[language=TeX]
-$V = \frac{4}{3}\pi r^3$
-
-\[
-  V = \frac{4}{3}\pi r^3
-\]
-
-\begin{equation}
-  \label{eq:vsphere}
-  V = \frac{4}{3}\pi r^3
-\end{equation}
-\end{lstlisting}
-        \end{column}
-        \begin{column}{.4\textwidth}
-            $V = \frac{4}{3}\pi r^3$
-            \[
-                V = \frac{4}{3}\pi r^3
-            \]
-            \begin{equation}
-                \label{eq:vsphere}
-                V = \frac{4}{3}\pi r^3
-            \end{equation}
-        \end{column}
-    \end{columns}
-    \begin{itemize}
-        \item 更多内容请看 \href{https://zh.wikipedia.org/wiki/Help:数学公式}{\color{purple}{这里}}
-    \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-    \begin{columns}
-        \column{.65\textwidth}
-\begin{lstlisting}[language=TeX]
-    \begin{table}[htbp]
-      \caption{编号与含义}
-      \label{tab:number}
-      \centering
-      \begin{tabular}{cl}
-        \toprule
-        编号 & 含义 \\
-        \midrule
-        1 & 4.0 \\
-        2 & 3.7 \\
-        \bottomrule
-      \end{tabular}
     \end{table}
-    公式~(\ref{eq:vsphere}) 的
-    编号与含义请参见
-    表~\ref{tab:number}。
-\end{lstlisting}
-        \column{.35\textwidth}
-        \begin{table}[htpb]
-            \centering
-            \caption{编号与含义}
-            \label{tab:number}
-            \begin{tabular}{cl}\toprule
-                编号 & 含义 \\\midrule
-                1 & 4.0\\
-                2 & 3.7\\\bottomrule
-            \end{tabular}
-        \end{table}
-        \normalsize 公式~(\ref{eq:vsphere})的编号与含义请参见表~\ref{tab:number}。
-    \end{columns}
 \end{frame}
 
-\begin{frame}{作图}
-    \begin{itemize}
-        \item 矢量图 eps, ps, pdf
-        \begin{itemize}
-            \item METAPOST, pstricks, pgf $\ldots$
-            \item Xfig, Dia, Visio, Inkscape $\ldots$
-            \item Matlab / Excel 等保存为 pdf
-        \end{itemize}
-        \item 标量图 png, jpg/jpeg, tiff $\ldots$
-        \begin{itemize}
-            \item 提高清晰度，避免发虚
-            \item 应尽量避免使用
-        \end{itemize}
-    \end{itemize}
-    \vspace{-0.5cm}
-    \begin{figure}[htpb]
-        \centering
-        \includegraphics[width=0.2\linewidth]{pic/hit.jpeg}
-        \vspace{-0.5cm}
-        \caption{这个校徽就是 jpeg}
-    \end{figure}
+\begin{frame}
+    \begin{center}
+        感谢各位老师的聆听！    
+    \end{center}
 \end{frame}
-
 
 \section{参考文献}
 
